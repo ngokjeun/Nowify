@@ -9,9 +9,8 @@
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
       </div>
     </div>
-    <div v-else class="now-playing now-playing--black">
-      <h1 class="now-playing__idle-heading"> </h1>
-    </div>
+    <!-- Make this div empty when no music is playing -->
+    <div v-else class="now-playing now-playing--black"></div>
   </div>
 </template>
 
