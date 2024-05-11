@@ -1,24 +1,16 @@
 <template>
   <div id="app">
-    <div
-      v-if="player.playing"
-      class="now-playing"
-      :class="getNowPlayingClass()"
-    >
+    <div v-if="player.playing" class="now-playing" :class="getNowPlayingClass()">
       <div class="now-playing__cover">
-        <img
-          :src="player.trackAlbum.image"
-          :alt="player.trackTitle"
-          class="now-playing__image"
-        />
+        <img :src="player.trackAlbum.image" :alt="player.trackTitle" class="now-playing__image" />
       </div>
       <div class="now-playing__details">
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
       </div>
     </div>
-    <div v-else class="now-playing" :class="getNowPlayingClass()">
-      <h1 class="now-playing__idle-heading">No music is playing 😔</h1>
+    <div v-else class="now-playing now-playing--black">
+      <h1 class="now-playing__idle-heading"> </h1>
     </div>
   </div>
 </template>
