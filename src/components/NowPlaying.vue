@@ -170,16 +170,17 @@ export default {
      * Set the stylings of the app based on received colours.
      */
     setAppColours() {
-      document.documentElement.style.setProperty(
-        '--color-text-primary',
-        this.colourPalette.text
-      )
-
-      document.documentElement.style.setProperty(
-        '--colour-background-now-playing',
-        this.colourPalette.background
-      )
+      if (!this.player.playing) {
+        // Set default colors when no music is playing
+        document.documentElement.style.setProperty('--color-text-primary', '#FFFFFF'); // Default text color
+        document.documentElement.style.setProperty('--colour-background-now-playing', '#000000'); // Default background color
+      } else {
+        // Apply vibrant colors when music is playing
+        document.documentElement.style.setProperty('--color-text-primary', this.colourPalette.text);
+        document.documentElement.style.setProperty('--colour-background-now-playing', this.colourPalette.background);
+      }
     },
+
 
     /**
      * Handle newly updated Spotify Tracks.
@@ -198,8 +199,8 @@ export default {
        * Player is active, but user has paused.
        */
       if (this.playerResponse.is_playing === false) {
-        this.playerData = this.getEmptyPlayer()
-
+        this.playerData = this.getEmptyPlayer();
+        this.setAppColours();
         return
       }
 
