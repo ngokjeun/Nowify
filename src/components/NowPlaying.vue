@@ -191,7 +191,8 @@ export default {
         this.playerResponse.error?.status === 400
       ) {
         this.handleExpiredToken()
-
+        this.playerData = this.getEmptyPlayer();
+        this.setAppColours();
         return
       }
 
