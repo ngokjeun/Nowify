@@ -50,6 +50,7 @@ export default {
 
   mounted() {
     this.setDataInterval()
+    this.setAppColours()
   },
 
   beforeDestroy() {
@@ -170,7 +171,7 @@ export default {
      * Set the stylings of the app based on received colours.
      */
     setAppColours() {
-      if (!this.player.playing) {
+      if (!this.player.playing || Object.keys(this.player.trackAlbum).length === 0) {
         // Set default colors when no music is playing
         document.documentElement.style.setProperty('--color-text-primary', '#FFFFFF'); // Default text color
         document.documentElement.style.setProperty('--colour-background-now-playing', '#000000'); // Default background color
